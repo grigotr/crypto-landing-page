@@ -16,7 +16,7 @@ Welcome to my official development repository. I specialize in building **high-p
 
 ## 🚀 Live Demo
 You can view a fully responsive, production-ready implementation of my Web3 layout style here:
-👉 **[INSEREAZĂ AICI LINK-UL TĂU GENERAT DE GITHUB PAGES]**
+
 
 ### Key Features of this Template:
 *   **Cyberpunk UI/UX:** Dark-themed premium interface designed for high user trust.
@@ -40,4 +40,4 @@ I am available for rapid-delivery freelance tasks (24-48 hours turnaround time).
 ## 📬 Contact & Hire Me
 If you need a reliable developer who understands speed and quality, reach out directly via Telegram:
 
-💬 **Telegram:** [@TELEGRAM_USER_UL_TAU]
+💬 **Telegram:** t.me/MrGrigore
