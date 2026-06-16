@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-background">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CYBER_DEV — The Next Generation of Solana Tokens</title>
+<meta name="description" content="A premium Solana token landing page optimized for extreme load speeds and full mobile responsiveness.">
+<meta name="theme-color" content="#0b0e14">
+<style>
+  /* ===== Design Tokens ===== */
+  :root {
+    --bg: #0b0e14;
+    --surface: #111722;
+    --border: #2c3749;
+    --text: #ffffff;
+    --muted: #9aa7bd;
+    --green: #00ffa3;
+    --cyan: #00b8ff;
+    --radius: 16px;
+    --max: 1180px;
+    --font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  /* ===== Reset ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  section { scroll-margin-top: 80px; }
+
+  .wrap {
+    width: 100%;
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .cyan { color: var(--cyan); }
+  .green { color: var(--green); }
+
+  /* ===== Buttons ===== */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 13px 26px;
+    border-radius: 999px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: transform .25s ease, box-shadow .35s ease, background .3s ease;
+    white-space: nowrap;
+  }
+  .btn-primary {
+    color: #04130d;
+    background: linear-gradient(135deg, var(--green), var(--cyan));
+    box-shadow: 0 0 0 rgba(0,255,163,0);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(0,255,163,.55), 0 0 45px rgba(0,184,255,.35);
+  }
+  .btn-outline {
+    color: var(--text);
+    background: transparent;
+    border: 1px solid var(--border);
+  }
+  .btn-outline:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
+    box-shadow: 0 0 18px rgba(0,184,255,.25);
+    transform: translateY(-2px);
+  }
+
+  /* ===== Header ===== */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(11,14,20,.72);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    gap: 16px;
+  }
+  .logo {
+    font-weight: 800;
+    font-size: 1.2rem;
+    letter-spacing: .5px;
+  }
+  .logo span { color: var(--green); }
+  .nav-links {
+    display: none;
+    list-style: none;
+    gap: 32px;
+  }
+  .nav-links a {
+    color: var(--muted);
+    font-weight: 500;
+    font-size: .95rem;
+    position: relative;
+    transition: color .25s ease;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -6px;
+    width: 0; height: 2px;
+    background: linear-gradient(90deg, var(--green), var(--cyan));
+    transition: width .3s ease;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* ===== Hero ===== */
+  .hero {
+    position: relative;
+    text-align: center;
+    padding: 90px 0 100px;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%; left: 50%;
+    transform: translateX(-50%);
+    width: 700px; height: 700px;
+    max-width: 120vw;
+    background: radial-gradient(circle, rgba(0,255,163,.14), rgba(0,184,255,.06) 45%, transparent 70%);
+    filter: blur(20px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .hero .wrap { position: relative; z-index: 1; }
+  .badge {
+    display: inline-block;
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--green);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    padding: 7px 16px;
+    border-radius: 999px;
+    margin-bottom: 26px;
+    letter-spacing: .5px;
+  }
+  .hero h1 {
+    font-size: clamp(2.2rem, 7vw, 4.4rem);
+    line-height: 1.08;
+    font-weight: 800;
+    letter-spacing: -1px;
+    max-width: 900px;
+    margin: 0 auto 22px;
+    text-wrap: balance;
+  }
+  .hero p {
+    color: var(--muted);
+    font-size: clamp(1rem, 2.5vw, 1.18rem);
+    max-width: 620px;
+    margin: 0 auto 38px;
+    text-wrap: pretty;
+  }
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  /* ===== Section heading ===== */
+  .section { padding: 80px 0; }
+  .section-head {
+    text-align: center;
+    margin-bottom: 54px;
+  }
+  .section-head h2 {
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    font-weight: 800;
+    letter-spacing: -.5px;
+    text-wrap: balance;
+  }
+  .section-head p {
+    color: var(--muted);
+    margin-top: 12px;
+    max-width: 540px;
+    margin-inline: auto;
+  }
+
+  /* ===== Tokenomics ===== */
+  .tokenomics { background: var(--surface); }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 22px;
+  }
+  .card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 34px 28px;
+    transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+  }
+  .card:hover {
+    transform: translateY(-6px);
+    border-color: var(--green);
+    box-shadow: 0 0 30px rgba(0,255,163,.12);
+  }
+  .card .pct {
+    font-size: 2.6rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--green), var(--cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+  .card h3 { font-size: 1.2rem; margin-bottom: 10px; }
+  .card p { color: var(--muted); font-size: .95rem; }
+
+  /* ===== Roadmap ===== */
+  .timeline {
+    position: relative;
+    max-width: 760px;
+    margin: 0 auto;
+    padding-left: 8px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 11px; top: 6px; bottom: 6px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--green), var(--cyan));
+  }
+  .phase {
+    position: relative;
+    padding: 0 0 44px 46px;
+  }
+  .phase:last-child { padding-bottom: 0; }
+  .phase .dot {
+    position: absolute;
+    left: 0; top: 4px;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 0 4px rgba(0,255,163,.18), 0 0 18px rgba(0,255,163,.7);
+  }
+  .phase .tag {
+    display: inline-block;
+    font-size: .78rem;
+    font-weight: 700;
+    color: var(--cyan);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .phase h3 { font-size: 1.3rem; margin-bottom: 8px; }
+  .phase p { color: var(--muted); font-size: .96rem; }
+
+  /* ===== FAQ ===== */
+  .faq { background: var(--surface); }
+  .faq-list { max-width: 760px; margin: 0 auto; }
+  .faq-item {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 16px;
+    overflow: hidden;
+    background: var(--bg);
+    transition: border-color .3s ease;
+  }
+  .faq-item.active { border-color: var(--cyan); box-shadow: 0 0 22px rgba(0,184,255,.12); }
+  .faq-q {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 22px 24px;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+  }
+  .faq-q .icon {
+    flex-shrink: 0;
+    width: 26px; height: 26px;
+    display: grid;
+    place-items: center;
+    color: var(--green);
+    font-size: 1.4rem;
+    transition: transform .35s ease;
+  }
+  .faq-item.active .icon { transform: rotate(45deg); }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .4s ease;
+  }
+  .faq-a p {
+    padding: 0 24px 22px;
+    color: var(--muted);
+    font-size: .96rem;
+  }
+
+  /* ===== Footer ===== */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 36px 0;
+    text-align: center;
+    color: var(--muted);
+    font-size: .9rem;
+  }
+  footer .logo { font-size: 1.05rem; margin-bottom: 10px; }
+
+  /* ===== Responsive (Desktop enhancements) ===== */
+  @media (min-width: 860px) {
+    .nav-links { display: flex; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="wrap nav">
+      <a href="#home" class="logo">⚡ CYBER<span>_DEV</span></a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#tokenomics">Tokenomics</a></li>
+          <li><a href="#roadmap">Roadmap</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <button class="btn btn-primary" type="button">Connect Wallet</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+      <div class="wrap">
+        <span class="badge">⚡ Built on Solana</span>
+        <h1>The Next Generation of <span class="cyan">Solana Tokens</span> is Here</h1>
+        <p>Engineered for extreme load speeds and flawless mobile-responsive viewing. A premium Web3 experience that loads in a blink and looks stunning on every device.</p>
+        <div class="hero-cta">
+          <button class="btn btn-primary" type="button">Connect Wallet</button>
+          <a href="#roadmap" class="btn btn-outline">View Roadmap</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TOKENOMICS ===== -->
+    <section class="section tokenomics" id="tokenomics">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Tokenomics &amp; Distribution</h2>
+          <p>A transparent and balanced allocation designed for sustainable growth and long-term value.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <div class="pct">10%</div>
+            <h3>Liquidity Pool</h3>
+            <p>Locked liquidity to ensure stable, secure, and reliable trading from day one.</p>
+          </article>
+          <article class="card">
+            <div class="pct">50%</div>
+            <h3>Public Presale</h3>
+            <p>Fair launch allocation giving the community first access to the token at presale pricing.</p>
+          </article>
+          <article class="card">
+            <div class="pct">40%</div>
+            <h3>Ecosystem &amp; Marketing</h3>
+            <p>Fuel for partnerships, exchange listings, and aggressive global marketing campaigns.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ROADMAP ===== -->
+    <section class="section" id="roadmap">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>The Roadmap</h2>
+          <p>Our strategic path from launch to global exchange domination.</p>
+        </div>
+        <div class="timeline">
+          <div class="phase">
+            <span class="dot" aria-hidden="true"></span>
+            <span class="tag">Phase 1</span>
+            <h3>Launch</h3>
+            <p>Smart contract deployment, security audit, website release, and public presale go live on Solana.</p>
+          </div>
+          <div class="phase">
+            <span class="dot" aria-hidden="true"></span>
+            <span class="tag">Phase 2</span>
+            <h3>Massive Marketing</h3>
+            <p>Influencer partnerships, viral social campaigns, community expansion, and strategic collaborations worldwide.</p>
+          </div>
+          <div class="phase">
+            <span class="dot" aria-hidden="true"></span>
+            <span class="tag">Phase 3</span>
+            <h3>Exchange Listings</h3>
+            <p>Listings on major centralized exchanges, CoinGecko &amp; CMC tracking, and continued ecosystem development.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="section faq" id="faq">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Frequently Asked Questions</h2>
+          <p>Everything you need to know before joining the presale.</p>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-q" type="button" aria-expanded="false">
+              How to buy?
+              <span class="icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a">
+              <p>Connect your Solana wallet, switch to the presale section, enter the amount of SOL you wish to contribute, and confirm the transaction. Your tokens will be claimable once the presale concludes.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" type="button" aria-expanded="false">
+              Which wallet to use?
+              <span class="icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a">
+              <p>We recommend Phantom or Solflare for the smoothest experience. Any Solana-compatible wallet that supports dApp connections will work perfectly on both desktop and mobile.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" type="button" aria-expanded="false">
+              Is the contract audited?
+              <span class="icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a">
+              <p>Yes. Our smart contract undergoes a full third-party security audit before launch, and liquidity is locked to protect every holder in the community.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="wrap">
+      <div class="logo">⚡ CYBER<span class="green">_DEV</span></div>
+      <p>&copy; 2026 CYBER_DEV. All rights reserved. Built on Solana.</p>
+    </div>
+  </footer>
+
+  <script>
+    // ===== Accordion FAQ =====
+    (function () {
+      var items = document.querySelectorAll('.faq-item');
+
+      items.forEach(function (item) {
+        var btn = item.querySelector('.faq-q');
+        var answer = item.querySelector('.faq-a');
+
+        btn.addEventListener('click', function () {
+          var isOpen = item.classList.contains('active');
+
+          // Close all items for a clean single-open accordion
+          items.forEach(function (other) {
+            other.classList.remove('active');
+            other.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+            other.querySelector('.faq-a').style.maxHeight = null;
+          });
+
+          // Open the clicked one if it was previously closed
+          if (!isOpen) {
+            item.classList.add('active');
+            btn.setAttribute('aria-expanded', 'true');
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
